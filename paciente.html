@@ -1,0 +1,196 @@
+<script type="text/javascript">
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	id('whatsapp').onkeyup = function()	{
+		mascara( this, mtel );
+	}
+	id('telefone').onkeyup = function()	{
+		mascara( this, mtel );
+	}
+	id('recado').onkeyup = function()	{
+		mascara( this, mtel );
+	}
+}
+
+function handleInput(e) {
+   var ss = e.target.selectionStart;
+   var se = e.target.selectionEnd;
+   e.target.value = e.target.value.toUpperCase();
+   e.target.selectionStart = ss;
+   e.target.selectionEnd = se;
+}
+</script>
+<html lang="PT-BR">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Informações do paciente</title>
+	<style>
+		input[type=text], select {
+		  width: 100%;		  
+		  padding: 12px 20px;
+		  margin: 08px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  font-family: arial;
+		}
+		input[type=password], select {
+		  width: 100%;
+		  padding: 12px 20px;
+		  margin: 08px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  font-family: arial;
+		}
+		input[type=submit], select {
+		  background-color: #4CAF50;
+		  width: 100%;
+		  color: white;
+		  padding: 14px 20px;
+		  margin: 8px 0;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  font-family: arial;
+		}
+		input[type=date], select {
+		  width: 48%;
+		  right:100%;		  
+		  padding: 12px 20px;
+		  margin: 08px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  font-family: arial;
+		}
+		table {
+			margin: 0 auto;
+			border: 1;
+			font-family: arial;
+		}
+		input[type=submit]:hover {
+		  background-color: #45a049;
+		}
+		</style>
+</head>
+
+<body>
+	<table width="345" cellpadding="7">
+		<tr>
+			<td>
+								<form action="paciente.php" method="post">
+					<label for="textfield">Digite o CNS do paciente:</label><br>
+					<input type="text" name="cns-cidadao" value="">
+					<input type="submit" value="Buscar">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form action="especialista.php" method="post">
+					<label for="textfield">Nome:</label><br>
+					<input type="text" name="nome" size=35
+						    value="" oninput="handleInput(event)" />
+					<BR>
+					<input type="radio" name="sexo" value="MASCULINO"
+						   >Masculino
+					<input type="radio" name="sexo" value="FEMININO"
+						   >Feminino
+					<BR>
+						<BR>
+					<label for="textfield">Nascimento:</label><br>
+					<input type="date" name="nascimento" 
+						    value="">
+					<BR>
+					<label for="ubs">UBS:</label><br>
+					<input type="text" name="ubs" size=35
+						    value="Desenvolvimento                    ">
+					<BR>
+					<label for="acs">ACS:</label><br>
+					<input type="text" name="acs" size=35
+						    value="">
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#DDDDDD">
+				<table border="0" width="100%" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>
+							<label for="whatsapp">WhatsApp:</label><br>
+							<input type="text" name="whatsapp" id="whatsapp" size=15 maxlength="15" value="">
+						</td>
+						<td>
+							<label for="telefone">Telefone:</label><br>
+							<input type="text" name="telefone" id="telefone" size=15 maxlength="15" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="recado">Telefone p/ recado:</label><br>
+							<input type="text" name="recado" id="recado" size=15 maxlength="15" value="">	
+						</td>
+						<td>
+							<label for="recado_nome">Nome:</label><br>
+							<input type="text" name="recado_nome" id="recado" size=15 maxlength="35" value="">	
+						</td>
+					</tr>
+				</table>
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+					<label for="especialidade">Especialidade solicitada:</label><br>
+					<select name="especialidade">
+						<option value="3">Dermatologia                  </option>
+<option value="17">Fisioterapia Péuvica          </option>
+<option value="15">Fonoaudiologia                </option>
+<option value="9">Ginecologia                   </option>
+<option value="5">Neuropediatria                </option>
+<option value="12">Nutrição                      </option>
+<option value="2">Oftalmologia                  </option>
+<option value="1">Ortopedia                     </option>
+<option value="6">Otorrinolaringologia          </option>
+<option value="4">Pediatria                     </option>
+<option value="13">Psicologia                    </option>
+<option value="11">Ultrassom                     </option>
+<option value="7">Urologia                      </option>
+					</select>  &nbsp; &nbsp;
+					<input type="checkbox" name="urgencia" id="urgencia">Urg&ecirc;ncia<br>
+					<BR>
+					<label for="telefone">Diagn&oacute;stico:</label><br>
+					<textarea rows="2" cols="42" wrap="physical" name="diagnostico"></textarea>
+					<BR>
+					<label for="cid">CID:</label><br>
+					<input type="text" name="cid" size=15 value="">
+					
+					<input type="submit" value="Continuar">
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+
