@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Brazil/East');
-session_start();
+session_start("");
 
 function conectar_banco($nome_banco)
 {

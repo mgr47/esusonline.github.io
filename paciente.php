@@ -97,14 +97,14 @@ function handleInput(e) {
 </head>
 
 <body>
-	<table width="345" border="1" align="center" cellpadding="7">
+<table width="345" cellpadding="7">
 		<tr>
 			<td>
 				<?php
 					
 					include_once ('functions.php');
 					if ((!empty($_GET))and($_GET['semcns']==1)){
-					echo 'Digite o CNS do cidadão e clique em BUSCAR!';		
+					echo "<p style='color:red;'>" . 'Digite o CNS do cidadão e clique em BUSCAR!';		
 					}
 					if (!empty($_POST )) 
 					{
@@ -136,13 +136,13 @@ function handleInput(e) {
 							}
 							else
 							{
-								echo 'Dados não localizados! Digite manualmente.';
+								echo "<p style='color:red;'>" . 'Dados não localizados! Digite manualmente.';
 								$_SESSION['cns-cidadao'] = $_POST['cns-cidadao'];
 							}
 						}
 						else
 						{
-							echo 'Digite o CNS do cidadão!';
+							echo "<p style='color:red;'>" . 'Digite o CNS do cidadão!';
 							$_SESSION['cns-cidadao'] = '';
 						}
 					}
@@ -165,6 +165,7 @@ function handleInput(e) {
 						   <?php if (isset($_SESSION['sexo'])){ if ($_SESSION['sexo']=='MASCULINO'){echo ' checked=true';}}?>>Masculino
 					<input type="radio" name="sexo" value="FEMININO"
 						   <?php if (isset($_SESSION['sexo'])){ if ($_SESSION['sexo']=='FEMININO'){echo ' checked=true';}}?>>Feminino
+					<BR>
 					<BR>
 					<label for="textfield">Nascimento:</label><br>
 					<input type="date" name="nascimento" 
@@ -225,10 +226,10 @@ function handleInput(e) {
 					<input type="checkbox" name="urgencia" id="urgencia">Urg&ecirc;ncia<br>
 					<BR>
 					<label for="telefone">Diagn&oacute;stico:</label><br>
-					<textarea rows="2" cols="35" wrap="physical" name="diagnostico"><?php echo(verificar_imprimir_so_texto('diagnostico')); ?></textarea>
+					<textarea rows="2" cols="42" wrap="physical" name="diagnostico"><?php echo(verificar_imprimir_so_texto('diagnostico')); ?></textarea>
 					<BR>
 					<label for="cid">CID:</label><br>
-					<input type="text" name="cid" size=15<?php echo(verificar_imprimir('cid')); ?>>
+					<input type="text" name="cid" size=15<?php echo(verificar_imprimir('cid')); ?> value="">
 					
 					<input type="submit" value="Continuar">
 				</form>

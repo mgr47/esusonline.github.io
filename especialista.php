@@ -4,9 +4,61 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Informações do especialista</title>
+	<style>
+		input[type=text], select {
+		  width: 100%;		  
+		  padding: 12px 20px;
+		  margin: 08px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  font-family: arial;
+		}
+		input[type=password], select {
+		  width: 100%;
+		  padding: 12px 20px;
+		  margin: 08px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  font-family: arial;
+		}
+		input[type=submit], select {
+		  background-color: #4CAF50;
+		  width: 100%;
+		  color: white;
+		  padding: 14px 20px;
+		  margin: 8px 0;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  font-family: arial;
+		}
+		input[type=date], select {
+		  width: 48%;
+		  right:100%;		  
+		  padding: 12px 20px;
+		  margin: 08px 0;
+		  display: inline-block;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  box-sizing: border-box;
+		  font-family: arial;
+		}
+		table {
+			margin: 0 auto;
+			border: 1;
+			font-family: arial;
+		}
+		input[type=submit]:hover {
+		  background-color: #45a049;
+		}
+		</style>
 </head>
 <body>
-	<table width="345" border="1" align="center" cellpadding="7">
+	<table width="345" cellpadding="7">
 		<tr>
 			<td>
 				<?php 
@@ -65,6 +117,7 @@
 						{	
 							echo ('<option value="'.$arr['codigo'].'">'.$arr['especialista'].'</option>');	
 						}
+						echo "<p style='color:red;'>" . 'Usuário ou senha inválido!';
 					?>
 				</select>
 					<input type="submit" value="Consultar Agenda">
